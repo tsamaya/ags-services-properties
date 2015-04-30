@@ -71,7 +71,7 @@ def main(argv=None):
 
         #Create the summary file of services
         serviceResultFile = open(resultFile,'w')
-        serviceResultFile.write("ServiceName,Folder,Type,Status,Min Instances,Max Instances,FeatureService,kml,wms,Max Records,Cluster,Cache Directory,Jobs Directory,Output Directory" + "\n")
+        serviceResultFile.write("ServiceName,Folder,Type,Status,Min Instances,Max Instances,maxUsageTime,maxWaitTime,maxIdleTime,isolationLevel,instancesPerContainer,recycleInterval,recycleStartTime,keepAliveInterval,FeatureService,kml,wms,Max Records,Cluster,Cache Directory,Jobs Directory,Output Directory" + "\n")
 
         #Loop on the found folders and discover the services and write the service information
         for folder in folders:
@@ -141,7 +141,7 @@ def main(argv=None):
                         jsonOBJStatus = json.loads(readData)
 
                         # Build the line to write to the output file
-                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["clusterName"]) + "," + "NA" + "," + "NA" + "," + "NA" +"\n"
+                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + str(jsonOBJ["maxUsageTime"]) + "," + str(jsonOBJ["maxWaitTime"]) + "," + str(jsonOBJ["maxIdleTime"]) + "," + str(jsonOBJ["isolationLevel"]) + "," + str(jsonOBJ["instancesPerContainer"]) + "," + str(jsonOBJ["recycleInterval"]) + "," + str(jsonOBJ["recycleStartTime"]) + "," + str(jsonOBJ["keepAliveInterval"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["clusterName"]) + "," + "NA" + "," + "NA" + "," + "NA" +"\n"
 
                         # Write the results to the file
                         serviceResultFile.write(ln)
@@ -174,7 +174,7 @@ def main(argv=None):
                         jsonOBJStatus = json.loads(readData)
 
                         # Build the line to write to the output file
-                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["clusterName"]) + "," + "NA" + "," + str(jsonOBJ["properties"]["jobsDirectory"]) + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
+                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + str(jsonOBJ["maxUsageTime"]) + "," + str(jsonOBJ["maxWaitTime"]) + "," + str(jsonOBJ["maxIdleTime"]) + "," + str(jsonOBJ["isolationLevel"]) + "," + str(jsonOBJ["instancesPerContainer"]) + "," + str(jsonOBJ["recycleInterval"]) + "," + str(jsonOBJ["recycleStartTime"]) + "," + str(jsonOBJ["keepAliveInterval"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["clusterName"]) + "," + "NA" + "," + str(jsonOBJ["properties"]["jobsDirectory"]) + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
 
                         # Write the results to the file
                         serviceResultFile.write(ln)
@@ -220,7 +220,7 @@ def main(argv=None):
                             wmsStatus = "NA"
 
                         # Build the line to write to the output file
-                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + "NA" + "," + "NA" + "," + wmsStatus +"," + "NA" + "," + str(jsonOBJ["clusterName"]) + "," + str(jsonOBJ["properties"]["cacheDir"]) + "," + "NA," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
+                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + str(jsonOBJ["maxUsageTime"]) + "," + str(jsonOBJ["maxWaitTime"]) + "," + str(jsonOBJ["maxIdleTime"]) + "," + str(jsonOBJ["isolationLevel"]) + "," + str(jsonOBJ["instancesPerContainer"]) + "," + str(jsonOBJ["recycleInterval"]) + "," + str(jsonOBJ["recycleStartTime"]) + "," + str(jsonOBJ["keepAliveInterval"]) + "," + "NA" + "," + "NA" + "," + wmsStatus +"," + "NA" + "," + str(jsonOBJ["clusterName"]) + "," + str(jsonOBJ["properties"]["cacheDir"]) + "," + "NA," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
 
                         # Write the results to the file
                         serviceResultFile.write(ln)
@@ -258,7 +258,7 @@ def main(argv=None):
                         jsonOBJStatus = json.loads(readData)
 
                         # Build the line to write to the output file
-                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["properties"]["maxRecordCount"]) + "," + str(jsonOBJ["clusterName"]) + "," + str(jsonOBJ["properties"]["cacheDir"]) + "," + "NA" + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
+                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + str(jsonOBJ["maxUsageTime"]) + "," + str(jsonOBJ["maxWaitTime"]) + "," + str(jsonOBJ["maxIdleTime"]) + "," + str(jsonOBJ["isolationLevel"]) + "," + str(jsonOBJ["instancesPerContainer"]) + "," + str(jsonOBJ["recycleInterval"]) + "," + str(jsonOBJ["recycleStartTime"]) + "," + str(jsonOBJ["keepAliveInterval"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["properties"]["maxRecordCount"]) + "," + str(jsonOBJ["clusterName"]) + "," + str(jsonOBJ["properties"]["cacheDir"]) + "," + "NA" + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
 
                         # Write the results to the file
                         serviceResultFile.write(ln)
@@ -296,7 +296,7 @@ def main(argv=None):
                         jsonOBJStatus = json.loads(readData)
 
                         # Build the line to write to the output file
-                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["clusterName"]) + "," + "NA" + "," + str(jsonOBJ["properties"]["jobsDirectory"]) + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
+                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + str(jsonOBJ["maxUsageTime"]) + "," + str(jsonOBJ["maxWaitTime"]) + "," + str(jsonOBJ["maxIdleTime"]) + "," + str(jsonOBJ["isolationLevel"]) + "," + str(jsonOBJ["instancesPerContainer"]) + "," + str(jsonOBJ["recycleInterval"]) + "," + str(jsonOBJ["recycleStartTime"]) + "," + str(jsonOBJ["keepAliveInterval"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["clusterName"]) + "," + "NA" + "," + str(jsonOBJ["properties"]["jobsDirectory"]) + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
 
                         # Write the results to the file
                         serviceResultFile.write(ln)
@@ -333,7 +333,7 @@ def main(argv=None):
                         jsonOBJStatus = json.loads(readData)
 
                         # Build the line to write to the output file
-                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["clusterName"]) + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
+                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + str(jsonOBJ["maxUsageTime"]) + "," + str(jsonOBJ["maxWaitTime"]) + "," + str(jsonOBJ["maxIdleTime"]) + "," + str(jsonOBJ["isolationLevel"]) + "," + str(jsonOBJ["instancesPerContainer"]) + "," + str(jsonOBJ["recycleInterval"]) + "," + str(jsonOBJ["recycleStartTime"]) + "," + str(jsonOBJ["keepAliveInterval"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["clusterName"]) + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
 
                         # Write the results to the file
                         serviceResultFile.write(ln)
@@ -370,7 +370,7 @@ def main(argv=None):
                         jsonOBJStatus = json.loads(readData)
 
                         # Build the line to write to the output file
-                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["properties"]["maxRecordCount"]) + "," + str(jsonOBJ["clusterName"]) + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
+                        ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + str(jsonOBJ["maxUsageTime"]) + "," + str(jsonOBJ["maxWaitTime"]) + "," + str(jsonOBJ["maxIdleTime"]) + "," + str(jsonOBJ["isolationLevel"]) + "," + str(jsonOBJ["instancesPerContainer"]) + "," + str(jsonOBJ["recycleInterval"]) + "," + str(jsonOBJ["recycleStartTime"]) + "," + str(jsonOBJ["keepAliveInterval"]) + "," + "NA" + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["properties"]["maxRecordCount"]) + "," + str(jsonOBJ["clusterName"]) + "," + "NA" + "," + "NA" + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
 
                         # Write the results to the file
                         serviceResultFile.write(ln)
@@ -416,7 +416,7 @@ def main(argv=None):
 
                         if len(jsonOBJ["extensions"]) == 0:
                             # Build the line to write to the output file
-                            ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + "FeatServHolder" + "," + "Disabled" + "," + "Disabled" +"," + str(jsonOBJ["properties"]["maxRecordCount"]) + "," + str(jsonOBJ["clusterName"]) + "," + cacheDir + "," + "NA" + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
+                            ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + str(jsonOBJ["maxUsageTime"]) + "," + str(jsonOBJ["maxWaitTime"]) + "," + str(jsonOBJ["maxIdleTime"]) + "," + str(jsonOBJ["isolationLevel"]) + "," + str(jsonOBJ["instancesPerContainer"]) + "," + str(jsonOBJ["recycleInterval"]) + "," + str(jsonOBJ["recycleStartTime"]) + "," + str(jsonOBJ["keepAliveInterval"]) + "," + "FeatServHolder" + "," + "Disabled" + "," + "Disabled" +"," + str(jsonOBJ["properties"]["maxRecordCount"]) + "," + str(jsonOBJ["clusterName"]) + "," + cacheDir + "," + "NA" + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
                         else:
                             # Extract the KML properties from the response
                             kmlProps = [mapKML for mapKML in jsonOBJ["extensions"] if mapKML["typeName"] == 'KmlServer']#.items()[0][1] == 'KmlServer']
@@ -443,7 +443,7 @@ def main(argv=None):
                                 wmsStatus = "NA"
 
 
-                            ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + featureStatus + "," + kmlStatus + "," + wmsStatus +"," + str(jsonOBJ["properties"]["maxRecordCount"]) + "," + str(jsonOBJ["clusterName"]) + "," + cacheDir + "," + "NA" + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
+                            ln = str(jsonOBJ["serviceName"]) + "," + folder + "," + str(item["type"]) + "," + jsonOBJStatus['realTimeState'] + "," + str(jsonOBJ["minInstancesPerNode"]) + "," + str(jsonOBJ["maxInstancesPerNode"]) + "," + str(jsonOBJ["maxUsageTime"]) + "," + str(jsonOBJ["maxWaitTime"]) + "," + str(jsonOBJ["maxIdleTime"]) + "," + str(jsonOBJ["isolationLevel"]) + "," + str(jsonOBJ["instancesPerContainer"]) + "," + str(jsonOBJ["recycleInterval"]) + "," + str(jsonOBJ["recycleStartTime"]) + "," + str(jsonOBJ["keepAliveInterval"]) + "," + featureStatus + "," + kmlStatus + "," + wmsStatus +"," + str(jsonOBJ["properties"]["maxRecordCount"]) + "," + str(jsonOBJ["clusterName"]) + "," + cacheDir + "," + "NA" + "," + str(jsonOBJ["properties"]["outputDir"]) +"\n"
 
                         # Write the results to the file
                         serviceResultFile.write(ln)
