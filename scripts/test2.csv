@@ -1,0 +1,16 @@
+ServiceName,Folder,Type,Status,Min Instances,Max Instances,maxUsageTime,maxWaitTime,maxIdleTime,FeatureService,kml,wms,Max Records,Cluster,Cache Directory,Jobs Directory,Output Directory
+arcOpolePrint,arcOpole/,MapServer,STARTED,1,1,600,60,1800,false,false,false,1000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
+Cadastre,arcOpole/,MapServer,STARTED,1,1,600,60,1800,true,false,true,1000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
+villes,communes/,MapServer,STOPPED,1,1,600,60,1800,false,false,false,2000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
+GetTimestamp,gp/,GPServer,STARTED,0,1,600,60,1800,NA,NA,NA,NA,default,NA,C:\arcgisserver\directories\arcgisjobs,C:\arcgisserver\directories\arcgisoutput
+isere,maps/,MapServer,STARTED,1,1,600,60,1800,false,false,false,1000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
+paris,maps/,MapServer,STOPPED,1,2,600,60,1800,false,false,false,1000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
+paris_201410021619,maps/,MapServer,STOPPED,1,2,600,60,1800,false,false,false,1000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
+retail,maps/,MapServer,STOPPED,0,1,600,60,1800,false,false,false,20000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
+stationsSE,maps/,MapServer,STARTED,0,1,600,60,1800,false,false,false,1000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
+tomtomESMP_2014Q1_defaultrestrictions,na/,MapServer,STARTED,0,1,600,60,1800,false,false,false,1000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
+nuts,secured/,MapServer,STOPPED,1,1,600,60,1800,false,false,false,1000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
+Geometry,Utilities/,GeometryServer,STARTED,1,1,600,60,1800,NA,NA,NA,NA,default,NA,NA,NA
+PrintingTools,Utilities/,GPServer,STOPPED,1,2,600,60,1800,NA,NA,NA,NA,default,NA,C:\arcgisserver\directories\arcgisjobs,C:\arcgisserver\directories\arcgisoutput
+Search,Utilities/,SearchServer,STOPPED,1,2,600,60,1800,NA,NA,NA,NA,default,NA,C:\arcgisserver\directories\arcgisjobs,C:\arcgisserver\directories\arcgisoutput
+SampleWorldCities,,MapServer,STARTED,1,1,600,60,180,false,true,NA,1000,default,false,NA,C:\arcgisserver\directories\arcgisoutput
